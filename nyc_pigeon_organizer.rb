@@ -5,7 +5,11 @@ def nyc_pigeon_organizer(data)
     thing.each do |key, value|
       value.each do |t|
         if new_data.key?(t)
-          new_data[t][item] = [key.to_s] 
+          if new_data[t][item]
+            new_data[t][item] << key.to_s
+          else
+            new_data[t][item] = [key.to_s]
+          end
         else
           new_data[t] = {item => [key.to_s]}
         end
